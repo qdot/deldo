@@ -33,15 +33,6 @@ class TranceVibrator():
 
         Returns True if open successful, False otherwise.
         """
-        # device_count = 0
-        # for bus in usb.legacy.busses():
-        #     devices = bus.devices
-        #     for dev in devices:
-        #         if dev.idVendor == self.TRANCEVIBE_VENDOR_ID and dev.idProduct == self.TRANCEVIBE_PRODUCT_ID :
-        #             if device_count == index:
-        #                 self.trancevibe_device = dev
-        #                 break;
-        #             device_count += 1            
         self.trancevibe_device = usb.core.find(idVendor = self.TRANCEVIBE_VENDOR_ID, 
                                                idProduct = self.TRANCEVIBE_PRODUCT_ID)
         if self.trancevibe_device is None:
