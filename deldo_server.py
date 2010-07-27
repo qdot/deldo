@@ -1,9 +1,9 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python
 import sys
 sys.path.append('/Users/qdot/git-projects/library/usr_darwin_10.5_x86/lib/python2.6/site-packages')
 
 import time
-import osc
+import OSC
 from trancevibe import *
 from contextlib import *
 
@@ -20,9 +20,9 @@ class DeldoServer(object):
         return d
 
     def open(self):        
-        osc.init()
-        osc.listen("127.0.0.1", 9001)
-        osc.bind(self.set_speed, "/deldo/speed")        
+        OSC.init()
+        OSC.listen("127.0.0.1", 9001)
+        OSC.bind(self.set_speed, "/deldo/speed")        
         return
 
     def set_speed(self, *msg):
@@ -30,7 +30,7 @@ class DeldoServer(object):
 
     @contextmanager
     def close(self):
-        osc.dontListen()
+        OSC.dontListen()
         return
 
 def main(argv = None):
