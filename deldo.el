@@ -23,8 +23,7 @@ Change to whatever you are using to control your vibrator"
   "Open connection to external vibrator control process"
   (interactive)  
   (start-process "DeldoControlProcess" "*DeldoControlProcess*"
-                 "/Users/qdot/git-projects/deldo/deldo_server.py")
-  )
+                 "/Users/qdot/git-projects/deldo/deldo_server.py"))
 
 ;; Close connection to vibration control process
 
@@ -32,9 +31,7 @@ Change to whatever you are using to control your vibrator"
   "Close connection to external vibrator control process"
   (interactive)
   (when (get-process "DeldoControlProcess")
-    (shell-command (concat deldo-exec " " "--die"))
-    )
-  )
+    (shell-command (concat deldo-exec " " "--die"))))
 
 ;; Set speed of vibration
 
@@ -45,8 +42,7 @@ Change to whatever you are using to control your vibrator"
     (deldo-start-process))
   (setq my-client (osc-make-client "127.0.0.1" 9001))
   (osc-send-message my-client "/deldo/speed" speed)
-  (delete-process my-client)
-  )
+  (delete-process my-client))
 
 (defun scope-creep-count-scope-level ()
   (interactive)
@@ -56,18 +52,13 @@ Change to whatever you are using to control your vibrator"
     (condition-case paren-exit
         (while (> one 0) 
           (backward-up-list)
-          (setq scope-count (+ 1 scope-count))
-          )
-      (error scope-count)
-      )
+          (setq scope-count (+ 1 scope-count)))
+      (error scope-count))
     (jump-to-register 999)
-    scope-count
-    )
-  )
+    scope-count))
 
 (defun scope-creep-post-command-hook ()
-  (deldo-set-speed (* 20 (scope-creep-count-scope-level)))
-)
+  (deldo-set-speed (* 20 (scope-creep-count-scope-level))))
 
 (define-minor-mode scope-creep-minor-mode "Turns on sexp evaluation for DelDO usage"
   'scope-creep-minor-mode
@@ -80,10 +71,7 @@ Change to whatever you are using to control your vibrator"
         )
     (progn
       (message "Turning off Scope Creep minor mode")
-      (remove-hook 'post-command-hook 'scope-creep-post-command-hook)
-      )
-    )
-)
+      (remove-hook 'post-command-hook 'scope-creep-post-command-hook))))
 
 ;; (defun deldo-getting-done-hook ()
 ;;   (if (string-equal "DONE" state)
@@ -110,8 +98,7 @@ Change to whatever you are using to control your vibrator"
 ;; (require 'rudel-obby-client)
 
 (defun deldo-reval-post-command-hook ()
-  (eval-buffer)
-)
+  (eval-buffer))
 
 (define-minor-mode deldo-reval-minor-mode "Turns on constant re-evaluation of current elisp buffer for DelDO usage"
   'deldo-reval-minor-mode
@@ -120,12 +107,8 @@ Change to whatever you are using to control your vibrator"
   (if deldo-reval-minor-mode
       (progn
         (message "Turning on DelDO-reval minor mode")
-        (add-hook 'post-command-hook 'deldo-reval-post-command-hook)
-        )
+        (add-hook 'post-command-hook 'deldo-reval-post-command-hook))
     (progn
       (message "Turning off DelDO-reval minor mode")
-      (remove-hook 'post-command-hook 'deldo-reval-post-command-hook)
-      )
-    )
-)
+      (remove-hook 'post-command-hook 'deldo-reval-post-command-hook))))
 
