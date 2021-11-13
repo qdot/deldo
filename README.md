@@ -3,7 +3,7 @@ Deldo is a sex toy control and teledildonics mode for Emacs
 
 Teledildonics is achieved using Rudel.
 
-[A video showing the features of deldo can be viewed on youtube by clicking this link.](http://www.youtube.com/watch?v=D1sXuHnf_lo)
+[A video showing the features of deldo can be viewed on youtube by clicking this link.](http://www.youtube.com/watch?v=D1sXuHnf_lo) ([Alternative version for people who can't bypass age check here](https://invidio.xamh.de/watch?v=D1sXuHnf_lo))
 
 The video script is available in the script.org file.
 
